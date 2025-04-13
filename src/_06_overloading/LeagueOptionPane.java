@@ -1,6 +1,6 @@
 package _06_overloading;
 
-import java.awt.Frame;
+import java.awt.Color;
 import java.io.IOException;
 
 import javax.imageio.ImageIO;
@@ -59,7 +59,7 @@ public class LeagueOptionPane {
 	
 	// 6. Create another showMessageDialog() method that lets us choose the Message, Title, and Image
 	//    3 String parameters (one for the message, one for the title, and one for the fileName)
-	public static void showMessageDialog(String message, String title, String fileName) {
+	public static JPanel showMessageDialog(String message, String title, String fileName) {
 		JFrame frame = new JFrame();
 		JPanel panel = new JPanel();
 		JLabel label = new JLabel(loadImage(fileName));
@@ -70,7 +70,7 @@ public class LeagueOptionPane {
 		frame.setTitle(title);
 		label.setText(message);
 		frame.pack();
-		
+		return panel;
 	}
 	
 	// 7. Call this method in the Runner class
@@ -79,7 +79,7 @@ public class LeagueOptionPane {
 		//	1. Create another showMessageDialog() method that lets us choose the Message, Title, Image, and Background Color
 		//     3 String parameters (one for the message, one for the title, and one for the fileName)
 		//	   1 Color parameter for the backgroundColor
-		//			
+		//		
 		//	2. Change the return type of the 3rd showMessageDialog() method(the one right above) to JPanel
 		//	   Make sure to return your panel at the end of that method
 		//	
@@ -91,7 +91,10 @@ public class LeagueOptionPane {
 		//	5. Call this method in the Runner class
 		//
 		// WHY DID WE DO THIS? - because we were able to overload this method by calling one of the other methods inside of it
-	
+	public static void showMessageDialog(String message, String title, String fileName, Color color) {
+		JPanel panel = showMessageDialog(message, title, fileName);
+		panel.setBackground(color);
+	}
 	
 	public static ImageIcon loadImage(String fileName) {
 		try {
