@@ -58,6 +58,9 @@ public class LeagueSnake extends PApplet {
         drawFood();
         move();
         drawSnake();
+        if(head.x==foodX && head.y==foodY) {
+        	eat();
+        }
     }
 
     void drawFood() {
@@ -155,23 +158,20 @@ public class LeagueSnake extends PApplet {
             head.x+=10;
         }
         checkBoundaries();
-        if(head.x==foodX && head.y==foodY) {
-        	eat();
-        }
-    }
+    }     
 
     void checkBoundaries() {
         // If the snake leaves the frame, make it reappear on the other side
         if(head.y<0) {
         	head.y = HEIGHT-10;
         }
-        else if(head.y>HEIGHT) {
+        else if(head.y+10>HEIGHT) {
         	head.y = 10;
         }
         else if(head.x<0) {
         	head.x = WIDTH-10;
         }
-        else if(head.x>WIDTH) {
+        else if(head.x+10>WIDTH) {
         	head.x = 10;
         }
     }
